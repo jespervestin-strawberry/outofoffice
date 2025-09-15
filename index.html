@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Out of Office - Asia Adventure Flight Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Demo Controls (Remove before publishing) -->
+        <div class="demo-controls" id="demoControls">
+            <div class="demo-header">🛠️ DEMO MODE - Remove before publishing</div>
+            <div class="demo-inputs">
+                <label for="demoDate">Demo Date:</label>
+                <input type="date" id="demoDate" value="2025-09-15">
+                <label for="demoTime">Demo Time:</label>
+                <input type="time" id="demoTime" value="12:00">
+                <button id="applyDemo">Apply Demo Time</button>
+                <button id="resetDemo">Use Real Time</button>
+            </div>
+        </div>
+
+        <header class="header">
+            <div class="airport-code">ARN</div>
+            <h1 class="title">OUT OF OFFICE FLIGHT TRACKER</h1>
+            <div class="date-time" id="currentDateTime"></div>
+        </header>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="label">PASSENGER:</span>
+                <span class="value">JESPER</span>
+            </div>
+            <div class="status-item">
+                <span class="label">TRIP STATUS:</span>
+                <span class="value" id="tripStatus">PREPARING FOR DEPARTURE</span>
+            </div>
+                <div class="status-item">
+                    <span class="label">RETURN:</span>
+                    <span class="value">OCT 05, 2025</span>
+                </div>
+        </div>
+
+        <div class="flight-board">
+            <div class="board-header">
+                <div class="col-flight">FLIGHT</div>
+                <div class="col-destination">DESTINATION</div>
+                <div class="col-departure">DEPARTURE</div>
+                <div class="col-status">STATUS</div>
+                <div class="col-countdown">COUNTDOWN</div>
+            </div>
+
+            <div class="flight-row" id="flight1">
+                <div class="col-flight">
+                    <span class="flight-number">OOO001</span>
+                    <span class="aircraft">✈️ A350</span>
+                </div>
+                <div class="col-destination">
+                    <div class="destination-main">SEOUL</div>
+                    <div class="destination-code">ICN</div>
+                </div>
+                <div class="col-departure">
+                    <div class="departure-date">SEP 19</div>
+                </div>
+                <div class="col-status">
+                    <span class="status-badge" id="status1">SCHEDULED</span>
+                </div>
+                <div class="col-countdown">
+                    <span class="countdown" id="countdown1">--:--:--</span>
+                </div>
+            </div>
+
+            <div class="flight-row" id="flight2">
+                <div class="col-flight">
+                    <span class="flight-number">OOO002</span>
+                    <span class="aircraft">✈️ B787</span>
+                </div>
+                <div class="col-destination">
+                    <div class="destination-main">TOKYO</div>
+                    <div class="destination-code">NRT</div>
+                </div>
+                <div class="col-departure">
+                    <div class="departure-date">SEP 26</div>
+                </div>
+                <div class="col-status">
+                    <span class="status-badge" id="status2">SCHEDULED</span>
+                </div>
+                <div class="col-countdown">
+                    <span class="countdown" id="countdown2">--:--:--</span>
+                </div>
+            </div>
+
+            <div class="flight-row" id="flight3">
+                <div class="col-flight">
+                    <span class="flight-number">OOO003</span>
+                    <span class="aircraft">✈️ A330</span>
+                </div>
+                <div class="col-destination">
+                    <div class="destination-main">STOCKHOLM</div>
+                    <div class="destination-code">ARN</div>
+                </div>
+                <div class="col-departure">
+                    <div class="departure-date">OCT 04</div>
+                </div>
+                <div class="col-status">
+                    <span class="status-badge" id="status3">SCHEDULED</span>
+                </div>
+                <div class="col-countdown">
+                    <span class="countdown" id="countdown3">--:--:--</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <h3>JOURNEY PROGRESS</h3>
+            <div class="route-map">
+                <div class="route-point active" id="point-arn">
+                    <div class="point-code">ARN</div>
+                    <div class="point-name">Stockholm</div>
+                </div>
+                <div class="route-line" id="line1"></div>
+                <div class="route-point" id="point-icn">
+                    <div class="point-code">ICN</div>
+                    <div class="point-name">Seoul</div>
+                </div>
+                <div class="route-line" id="line2"></div>
+                <div class="route-point" id="point-nrt">
+                    <div class="point-code">NRT</div>
+                    <div class="point-name">Tokyo</div>
+                </div>
+                <div class="route-line" id="line3"></div>
+                <div class="route-point" id="point-return">
+                    <div class="point-code">ARN</div>
+                    <div class="point-name">Return</div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="last-updated">
+                Last updated: <span id="lastUpdated"></span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
